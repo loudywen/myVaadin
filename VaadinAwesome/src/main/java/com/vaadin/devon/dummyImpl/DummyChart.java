@@ -114,8 +114,7 @@ public class DummyChart extends DummyChartDesign implements View, Broadcaster.Br
 		df.setRoundingMode(RoundingMode.CEILING);
 		temp = Double.parseDouble(holder[0]);
 		// System.out.println("temp recieved from boardcaster: " + temp);
-		// temp =
-
+		
 	}
 
 }

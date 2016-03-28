@@ -10,7 +10,7 @@ import com.vaadin.server.Resource;
 public enum DashboardViewType {
 
 	DASHBOARD("pending", DummyHome.class, FontAwesome.HOME, true),
-	REST("pending", DummyRest.class, FontAwesome.FROWN_O, true),
+	REST("rest", DummyRest.class, FontAwesome.FROWN_O, true),
 	CHART("Real-Time temperature",DummyChart.class,FontAwesome.BAR_CHART,false);
 
 	private final String viewName;

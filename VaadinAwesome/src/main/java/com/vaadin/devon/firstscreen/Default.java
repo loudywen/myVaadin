@@ -33,15 +33,15 @@ public class Default extends UI {
 	@Override
 	protected void init(VaadinRequest request) {
 
-		/*if (CheckSession.isLoggedIn()) {
+		if (CheckSession.isLoggedIn()) {
 			setContent(new MainView());
 		} else {
 			setContent(new LoginView1());
 			
-		}*/
+		}
 
 		setupEventBus();
-		setContent(new DummyDefault());
+		//setContent(new DummyDefault());
 
 
 	}
