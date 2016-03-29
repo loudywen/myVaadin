@@ -1,7 +1,7 @@
 package com.vaadin.devon.dummyImpl;
 
-import com.vaadin.devon.dummy.DummyChartDesign;
 
-public class DummyGrid extends DummyChartDesign {
+
+public class DummyGrid  {
 	//grid
 }

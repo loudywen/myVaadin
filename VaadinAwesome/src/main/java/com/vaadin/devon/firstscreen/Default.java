@@ -7,7 +7,6 @@ import com.google.common.eventbus.Subscribe;
 import com.vaadin.annotations.Theme;
 import com.vaadin.annotations.Title;
 import com.vaadin.annotations.Widgetset;
-import com.vaadin.devon.designImpl.AwesomeApp;
 import com.vaadin.devon.designImpl.LoginView1;
 import com.vaadin.devon.designImpl.MainView;
 import com.vaadin.devon.dummyImpl.DummyDefault;
