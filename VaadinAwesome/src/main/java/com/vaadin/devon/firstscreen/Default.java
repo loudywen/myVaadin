@@ -22,7 +22,7 @@ import com.vaadin.ui.UI;
 
 @SpringUI(path = "/")
 @Theme("dashboard")
-@Title("AwesomeApp")
+@Title("Real-Time Temperature Demo")
 @Widgetset("MyAppWidgetset")
 
 public class Default extends UI {

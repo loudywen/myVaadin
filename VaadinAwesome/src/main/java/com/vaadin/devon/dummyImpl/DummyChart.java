@@ -23,7 +23,7 @@ import com.vaadin.navigator.View;
 import com.vaadin.navigator.ViewChangeListener.ViewChangeEvent;
 import com.vaadin.ui.Component;
 
-public class DummyChart extends DummyChartDesign implements View, Broadcaster.BroadcastListener {
+public class DummyChart extends AbstractVaadinChartExample implements View, Broadcaster.BroadcastListener {
 
 	private double temp = 0;
 	private double tempholder = 0;
@@ -47,8 +47,7 @@ public class DummyChart extends DummyChartDesign implements View, Broadcaster.Br
 		final Random random = new Random();
 
 		final Chart chart = new Chart();
-		chart.setWidth("500px");
-
+		
 		final Configuration configuration = chart.getConfiguration();
 		configuration.getChart().setType(ChartType.SPLINE);
 		configuration.getTitle().setText("Live temperature data");
@@ -62,7 +61,7 @@ public class DummyChart extends DummyChartDesign implements View, Broadcaster.Br
 		yAxis.setTitle(new AxisTitle("Temperature"));
 		yAxis.setPlotLines(new PlotLine(0, 1, new SolidColor("#808080")));
 
-		configuration.getTooltip().setEnabled(false);
+		configuration.getTooltip().setEnabled(true);
 		configuration.getLegend().setEnabled(false);
 
 		final DataSeries series = new DataSeries();
