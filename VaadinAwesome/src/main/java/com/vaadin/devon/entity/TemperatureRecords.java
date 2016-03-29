@@ -1,6 +1,5 @@
 package com.vaadin.devon.entity;
 
-
 import java.sql.Timestamp;
 
 public class TemperatureRecords {
@@ -8,6 +7,20 @@ public class TemperatureRecords {
 	private long id;
 	private String email;
 	private double temperature;
+
+	public TemperatureRecords(long id, String email, double temperature, String device, Timestamp timeStamp) {
+		super();
+		this.id = id;
+		this.email = email;
+		this.temperature = temperature;
+		this.device = device;
+		this.timeStamp = timeStamp;
+	}
+
+	public TemperatureRecords() {
+
+	}
+
 	private String device;
 	private Timestamp timeStamp;
 

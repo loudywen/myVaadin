@@ -5,6 +5,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 import java.util.concurrent.atomic.AtomicLong;
 
 import javax.ws.rs.GET;
@@ -65,6 +66,16 @@ public class TestRest {
 		 */
 		return "got it";
 	}
+	
+	@GET
+	@Path("/showall")
+	@Produces("application/json")
+	public List<TemperatureRecords> showAll() {
+
+		
+		return tRDAO.findAll();
+	}
+
 
 	@GET
 	@Path("/testinsert")

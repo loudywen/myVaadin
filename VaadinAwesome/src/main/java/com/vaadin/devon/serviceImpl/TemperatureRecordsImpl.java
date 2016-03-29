@@ -1,5 +1,8 @@
 package com.vaadin.devon.serviceImpl;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Timestamp;
 import java.util.List;
 
 import javax.sql.DataSource;
@@ -9,6 +12,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Component;
 
 import com.vaadin.devon.entity.TemperatureRecords;
@@ -34,8 +38,20 @@ public class TemperatureRecordsImpl implements TemperatureRecordsDAO {
 
 	@Override
 	public List<TemperatureRecords> findAll() {
-		// TODO Auto-generated method stub
-		return null;
+		String selectAll = "Select * from temperaturerecords";
+
+		List<TemperatureRecords> allTemp = jdbcTemplate.query(selectAll, new RowMapper<TemperatureRecords>() {
+
+			public TemperatureRecords mapRow(ResultSet rs, int rowNum) throws SQLException {
+				TemperatureRecords temp = new TemperatureRecords(rs.getInt("ID"), rs.getString("EMAIL"),
+						rs.getDouble("TEMPERATURE"), rs.getString("DEVICE"), rs.getTimestamp("TIMESTAMP"));
+
+				log.info(temp.toString());
+				return temp;
+			}
+		});
+
+		return allTemp;
 	}
 
 	@Override
