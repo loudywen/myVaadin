@@ -91,7 +91,7 @@ public class TestRest {
 		// tr.setId(1L);
 		tr.setEmail("loudywen@gmail.com");
 		tr.setDevice("st100");
-		tr.setTemperature(51.0);
+		tr.setTemperature(599.0);
 		tr.setTimeStamp(ts);
 		tRDAO.insert(tr);
 

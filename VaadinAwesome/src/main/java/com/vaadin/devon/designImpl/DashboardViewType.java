@@ -1,6 +1,7 @@
 package com.vaadin.devon.designImpl;
 
 import com.vaadin.devon.dummyImpl.DummyChart;
+import com.vaadin.devon.dummyImpl.DummyGrid;
 import com.vaadin.devon.dummyImpl.DummyHome;
 import com.vaadin.devon.dummyImpl.DummyRest;
 import com.vaadin.navigator.View;

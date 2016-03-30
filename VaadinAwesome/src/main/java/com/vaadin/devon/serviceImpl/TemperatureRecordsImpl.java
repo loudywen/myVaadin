@@ -27,10 +27,6 @@ public class TemperatureRecordsImpl implements TemperatureRecordsDAO {
 	@Autowired
 	private JdbcTemplate jdbcTemplate;
 
-	public TemperatureRecordsImpl() {
-		log.info("-----------------------TemperatureRecordsImpl crated");
-	}
-
 	public void setJdbcTemplate(DataSource jdbcTemplate) {
 		log.info("------------------TemperatureRecordsImpl setJdbcTemplate created");
 		this.jdbcTemplate = (JdbcTemplate) jdbcTemplate;

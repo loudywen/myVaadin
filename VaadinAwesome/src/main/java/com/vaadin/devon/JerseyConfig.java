@@ -9,6 +9,6 @@ public class JerseyConfig extends ResourceConfig {
     public JerseyConfig() {
         register(RequestContextFilter.class);
         packages("com.vaadin.devon.restapi");
-       register(LoggingFilter.class);
+      // register(LoggingFilter.class);
     }
 }

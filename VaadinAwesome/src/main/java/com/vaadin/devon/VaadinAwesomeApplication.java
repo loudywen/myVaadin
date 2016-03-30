@@ -58,8 +58,4 @@ public class VaadinAwesomeApplication {
 		return impl;
 	}
 
-	@Bean
-	public TemperatureRecords tr() {
-		return new TemperatureRecords();
-	}
 }

@@ -98,8 +98,6 @@
 			<artifactId>db2jcc4</artifactId>
 			<version>3.61.75</version>
 		</dependency>
-
-
 	</dependencies>
 
 	<dependencyManagement>

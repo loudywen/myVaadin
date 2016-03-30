@@ -2,6 +2,9 @@ package com.vaadin.devon.entity;
 
 import java.sql.Timestamp;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class TemperatureRecords {
 
 	private long id;
