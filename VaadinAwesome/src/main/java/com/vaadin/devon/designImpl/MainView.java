@@ -1,9 +1,11 @@
 package com.vaadin.devon.designImpl;
 
 
-import org.springframework.beans.factory.annotation.Autowired;
-
-import com.vaadin.spring.annotation.SpringComponent;
+import com.vaadin.navigator.View;
+import com.vaadin.navigator.ViewChangeListener.ViewChangeEvent;
+import com.vaadin.spring.annotation.SpringView;
+import com.vaadin.spring.annotation.UIScope;
+import com.vaadin.spring.navigator.SpringViewProvider;
 import com.vaadin.ui.ComponentContainer;
 import com.vaadin.ui.CssLayout;
 import com.vaadin.ui.HorizontalLayout;
@@ -13,16 +15,17 @@ import com.vaadin.ui.HorizontalLayout;
  * left and creates a simple container for the navigator on the right.
  */
 @SuppressWarnings("serial")
-
-public class MainView extends HorizontalLayout {
+@SpringView(name="mainview")
+public class MainView extends HorizontalLayout implements View  {
 	
 	
-    public MainView() {
-    	
+	//@PostConstruct
+    public  MainView(SpringViewProvider spv) {
+    	System.out.println("---------------------------MainView-------------------- " + spv);
         setSizeFull();
         addStyleName("mainview");
 
-        addComponent(new DashboardMenu());
+        addComponent(new DashboardMenu(spv));
 
         ComponentContainer content = new CssLayout();
         content.addStyleName("view-content");
@@ -30,6 +33,13 @@ public class MainView extends HorizontalLayout {
         addComponent(content);
         setExpandRatio(content, 1.0f);
 
-        new DashboardNavigator(content);
+        new DashboardNavigator(content,spv);
+       
     }
+
+	@Override
+	public void enter(ViewChangeEvent event) {
+		// TODO Auto-generated method stub
+		
+	}
 }

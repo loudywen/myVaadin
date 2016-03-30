@@ -19,10 +19,8 @@ import com.vaadin.navigator.ViewChangeListener;
 public class DummyDefault extends DummyDefaultDesign implements ViewChangeListener {
 
 	private Navigator navigator;
-	@Autowired
-	private DummyGrid dg;
 
-	@PostConstruct
+
 	private void init() {
 		setupNavigator("Chart", DummyChart.class);
 		// toSpringView();

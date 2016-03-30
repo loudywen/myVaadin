@@ -6,6 +6,7 @@ import com.vaadin.navigator.Navigator;
 import com.vaadin.navigator.View;
 import com.vaadin.navigator.ViewChangeListener;
 import com.vaadin.navigator.ViewProvider;
+import com.vaadin.spring.navigator.SpringViewProvider;
 import com.vaadin.ui.ComponentContainer;
 import com.vaadin.ui.UI;
 
@@ -18,16 +19,21 @@ public class DashboardNavigator extends Navigator {
 
 	private static final DashboardViewType ERROR_VIEW = DashboardViewType.DASHBOARD;
 	private ViewProvider errorViewProvider;
+	private SpringViewProvider spv;
 
-	public DashboardNavigator(final ComponentContainer container) {
+	public DashboardNavigator(final ComponentContainer container, SpringViewProvider spv) {
 		super(UI.getCurrent(), container);
 /*
 		String host = getUI().getPage().getLocation().getHost();
 		if (TRACKER_ID != null && host.endsWith("demo.vaadin.com")) {
 			initGATracker(TRACKER_ID);
 		}*/
+		
+		
+		this.spv = spv;
+		System.out.println("---------------------------DashboardNavigator-------------------- " + spv);
 		initViewChangeListener();
-		initViewProviders();
+		initViewProviders(spv);
 
 	}
 
@@ -58,24 +64,22 @@ public class DashboardNavigator extends Navigator {
 				 * DashboardEventBus.post(new BrowserResizeEvent());
 				 * DashboardEventBus.post(new CloseOpenWindowsEvent());
 				 */
-
-				/*if (tracker != null) {
-					// The view change is submitted as a pageview for GA tracker
-					tracker.trackPageview("/dashboard/" + event.getViewName());
-				}*/
 			}
 		});
 	}
 
-	private void initViewProviders() {
+	private void initViewProviders(SpringViewProvider spv) {
 		// A dedicated view provider is added for each separate view type
 		for (final DashboardViewType viewType : DashboardViewType.values()) {
-			ViewProvider viewProvider = new ClassBasedViewProvider(viewType.getViewName(), viewType.getViewClass()) {
+			
+			//I am using SpringViewProvider for this applicaion .so I comment out this part. and only add the spv to addProvider()
+			
+			/*ViewProvider viewProvider = new ClassBasedViewProvider(viewType.getViewName(), viewType.getViewClass()) {
 
 				// This field caches an already initialized view instance if the
 				// view should be cached (stateful views).
 				private View cachedInstance;
-
+				//private SpringViewProvider svp;
 				@Override
 				public View getView(final String viewName) {
 					View result = null;
@@ -98,9 +102,12 @@ public class DashboardNavigator extends Navigator {
 
 			if (viewType == ERROR_VIEW) {
 				errorViewProvider = viewProvider;
-			}
+			}*/
 
-			addProvider(viewProvider);
+			if (viewType == ERROR_VIEW) {
+				errorViewProvider = spv;
+			}
+			addProvider(spv);
 		}
 
 		setErrorProvider(new ViewProvider() {

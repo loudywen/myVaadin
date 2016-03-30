@@ -12,13 +12,13 @@ import com.vaadin.navigator.View;
 import com.vaadin.navigator.ViewChangeListener.ViewChangeEvent;
 import com.vaadin.spring.annotation.SpringComponent;
 import com.vaadin.spring.annotation.SpringView;
+import com.vaadin.spring.annotation.UIScope;
 import com.vaadin.ui.Grid;
-import com.vaadin.ui.Label;
-import com.vaadin.ui.Notification;
 import com.vaadin.ui.VerticalLayout;
 
-//@SpringView(name = "dummygrid")
-@SpringComponent
+@SpringView(name = "Dummy Grid")
+
+@UIScope
 public class DummyGrid extends VerticalLayout implements View {
 
 	private Grid grid;
@@ -31,28 +31,33 @@ public class DummyGrid extends VerticalLayout implements View {
 
 	@Override
 	public void enter(ViewChangeEvent event) {
-		grid.setContainerDataSource(
-				new BeanItemContainer<TemperatureRecords>(TemperatureRecords.class, tRDAO.findAll()));
-		addComponent(grid);
-	
 
 	}
 
-	@PostConstruct
-	protected void init() {
-
-	
+	/*public DummyGrid() {
 		grid = new Grid();
 		grid.setSizeFull();
+		setMargin(true);
 		grid.addColumn("id", Long.class);
 		grid.addColumn("email", String.class);
-		grid.addColumn("temperature",Double.class);
-		//grid.addColumn("Temperature", Double.class);
+		grid.addColumn("temperature", Double.class);
+		addComponent(grid);
 
-	/*	tRDAO.findAll();
-		System.out.println("DDDDDDDDDDDDDDDDDDDDD");
-		Notification.show(tRDAO.toString());*/
+		System.out.println("===================" + tRDAO);
 
+	}*/
+
+	@PostConstruct
+	public void init() {
+		grid = new Grid();
+		grid.setSizeFull();
+		setMargin(true);
+		grid.addColumn("id", Long.class);
+		grid.addColumn("email", String.class);
+		grid.addColumn("temperature", Double.class);
+		addComponent(grid);
+		grid.setContainerDataSource(
+				new BeanItemContainer<TemperatureRecords>(TemperatureRecords.class, tRDAO.findAll()));
 	}
 
 }

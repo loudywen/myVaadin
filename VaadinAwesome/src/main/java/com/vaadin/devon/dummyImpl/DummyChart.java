@@ -4,8 +4,9 @@ import java.math.RoundingMode;
 import java.text.DecimalFormat;
 import java.util.Random;
 
-import com.vaadin.addon.charts.Chart;
+import javax.annotation.PostConstruct;
 
+import com.vaadin.addon.charts.Chart;
 import com.vaadin.addon.charts.model.AxisTitle;
 import com.vaadin.addon.charts.model.AxisType;
 import com.vaadin.addon.charts.model.ChartType;
@@ -14,13 +15,19 @@ import com.vaadin.addon.charts.model.DataSeries;
 import com.vaadin.addon.charts.model.DataSeriesItem;
 import com.vaadin.addon.charts.model.PlotLine;
 import com.vaadin.addon.charts.model.PlotOptionsSpline;
-import com.vaadin.devon.boardcast.Broadcaster;
 import com.vaadin.addon.charts.model.XAxis;
 import com.vaadin.addon.charts.model.YAxis;
 import com.vaadin.addon.charts.model.style.SolidColor;
+import com.vaadin.devon.boardcast.Broadcaster;
 import com.vaadin.navigator.View;
 import com.vaadin.navigator.ViewChangeListener.ViewChangeEvent;
+import com.vaadin.spring.annotation.SpringView;
+import com.vaadin.spring.annotation.UIScope;
 import com.vaadin.ui.Component;
+import com.vaadin.ui.UI;
+
+@SpringView(name = "Real-Time Temperature")
+@UIScope
 
 public class DummyChart extends AbstractVaadinChartExample implements View, Broadcaster.BroadcastListener {
 
@@ -29,11 +36,14 @@ public class DummyChart extends AbstractVaadinChartExample implements View, Broa
 	private int count = 0;
 	volatile boolean shutdown = false;
 	DummyTimelineSingleLine chart2 = new DummyTimelineSingleLine();
+	
+	//@PostConstruct
 	public DummyChart() {
-		
+		//System.out.println("??????????????????");
 		addComponent(getChart());
 		addComponent(chart2.getChart());
 		Broadcaster.register(this);
+	
 	}
 
 	@Override
@@ -43,6 +53,7 @@ public class DummyChart extends AbstractVaadinChartExample implements View, Broa
 
 	@Override
 	protected Component getChart() {
+		
 		final Random random = new Random();
 
 		final Chart chart = new Chart();

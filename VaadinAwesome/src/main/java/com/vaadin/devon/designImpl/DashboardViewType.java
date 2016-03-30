@@ -2,17 +2,19 @@ package com.vaadin.devon.designImpl;
 
 import com.vaadin.devon.dummyImpl.DummyChart;
 import com.vaadin.devon.dummyImpl.DummyGrid;
-import com.vaadin.devon.dummyImpl.DummyHome;
 import com.vaadin.devon.dummyImpl.DummyRest;
 import com.vaadin.navigator.View;
 import com.vaadin.server.FontAwesome;
 import com.vaadin.server.Resource;
+import com.vaadin.spring.annotation.UIScope;
 
+@UIScope
 public enum DashboardViewType {
 
-	DASHBOARD("pending", DummyHome.class, FontAwesome.HOME, true),
-	REST("rest", DummyRest.class, FontAwesome.FROWN_O, true),
-	CHART("Real-Time temperature",DummyChart.class,FontAwesome.BAR_CHART,false);
+	// right now i am using SpringViewProvider. so the only parameter will
+	// impact the naviagtor is only the viewName
+	DASHBOARD("Dummy Grid", DummyGrid.class, FontAwesome.HOME, true), REST("Real-Time Temperature", DummyChart.class,
+			FontAwesome.FROWN_O, true), DUMMYREST("Dummy Rest", DummyRest.class, FontAwesome.BAR_CHART, false);
 
 	private final String viewName;
 	private final Class<? extends View> viewClass;

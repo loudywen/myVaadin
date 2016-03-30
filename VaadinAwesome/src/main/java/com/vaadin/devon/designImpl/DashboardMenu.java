@@ -1,9 +1,5 @@
 package com.vaadin.devon.designImpl;
 
-import javax.annotation.PostConstruct;
-
-import org.springframework.beans.factory.annotation.Autowired;
-
 import com.vaadin.devon.entity.User;
 import com.vaadin.devon.util.CheckSession;
 import com.vaadin.navigator.Navigator;
@@ -47,12 +43,10 @@ public final class DashboardMenu extends CustomComponent {
 	private Label notificationsBadge;
 	private Label reportsBadge;
 	private MenuItem settingsItem;
-	private Navigator navigator;
 
-	
 
-/*	
-	public DashboardMenu() {
+	public DashboardMenu(SpringViewProvider spv) {
+		//System.out.println("---------------------------DashboardMenu-------------------- " + spv);
 		setPrimaryStyleName("valo-menu");
 		setId(ID);
 		setSizeUndefined();
@@ -62,8 +56,9 @@ public final class DashboardMenu extends CustomComponent {
 		// DashboardEventBus.register(this);
 
 		setCompositionRoot(buildContent());
-	}*/
-	public void init(){
+	}
+
+	public void init() {
 		setPrimaryStyleName("valo-menu");
 		setId(ID);
 		setSizeUndefined();
@@ -108,7 +103,7 @@ public final class DashboardMenu extends CustomComponent {
 		settings.addStyleName("user-menu");
 		final User user = getCurrentUser();
 		settingsItem = settings.addItem("", new ThemeResource("img/profile-pic-300px.jpg"), null);
-		//updateUserName();
+		updateUserName();
 		settingsItem.addItem("Edit Profile", new Command() {
 			@Override
 			public void menuSelected(final MenuItem selectedItem) {
@@ -156,7 +151,7 @@ public final class DashboardMenu extends CustomComponent {
 		menuItemsLayout.addStyleName("valo-menuitems");
 
 		for (final DashboardViewType view : DashboardViewType.values()) {
-		
+
 			Component menuItemComponent = new ValoMenuItemButton(view);
 
 			/*
@@ -207,7 +202,7 @@ public final class DashboardMenu extends CustomComponent {
 		badgeLabel.setWidthUndefined();
 		badgeLabel.setVisible(true);
 		dashboardWrapper.addComponent(badgeLabel);
-		//System.out.println("---------badge wrapper");
+		// System.out.println("---------badge wrapper");
 		return dashboardWrapper;
 	}
 
@@ -255,10 +250,10 @@ public final class DashboardMenu extends CustomComponent {
 			addClickListener(new ClickListener() {
 				@Override
 				public void buttonClick(final ClickEvent event) {
-					System.out.println("---------------"+ view.getViewName());
+					System.out.println("---------------" + view.getViewName());
 					UI.getCurrent().getNavigator().navigateTo(view.getViewName());
-					
-					//setupNavigator("Home", DummyHome.class);
+
+					// setupNavigator("Home", DummyHome.class);
 				}
 			});
 
@@ -270,12 +265,4 @@ public final class DashboardMenu extends CustomComponent {
 		 * view) { addStyleName(STYLE_SELECTED); } }
 		 */
 	}
-	
-	/*private void setupNavigator(String urlName, Class view) {
-		navigator = new Navigator(Default.getCurrent(), panel);
-
-		navigator.addView(urlName, view);
-
-		navigator.navigateTo(urlName);
-	}*/
 }

@@ -25,6 +25,7 @@ import com.vaadin.ui.VerticalLayout;
 import com.vaadin.ui.themes.ValoTheme;
 
 @SuppressWarnings("serial")
+
 public class LoginView1 extends VerticalLayout {
 
 	public LoginView1() {
