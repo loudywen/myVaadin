@@ -9,7 +9,9 @@ public class TemperatureRecords {
 
 	private long id;
 	private String email;
+	private String device;
 	private double temperature;
+	private Timestamp timeStamp;
 
 	public TemperatureRecords(long id, String email, double temperature, String device, Timestamp timeStamp) {
 		super();
@@ -23,9 +25,6 @@ public class TemperatureRecords {
 	public TemperatureRecords() {
 
 	}
-
-	private String device;
-	private Timestamp timeStamp;
 
 	public long getId() {
 		return id;

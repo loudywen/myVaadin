@@ -14,7 +14,7 @@ public enum DashboardViewType {
 	// right now i am using SpringViewProvider. so the only parameter will
 	// impact the naviagtor is only the viewName
 	DASHBOARD("Dummy Grid", DummyGrid.class, FontAwesome.HOME, true), REST("Real-Time Temperature", DummyChart.class,
-			FontAwesome.FROWN_O, true), DUMMYREST("Dummy Rest", DummyRest.class, FontAwesome.BAR_CHART, false);
+			FontAwesome.FROWN_O, true), GRID1("Grid", DummyRest.class, FontAwesome.BAR_CHART, false);
 
 	private final String viewName;
 	private final Class<? extends View> viewClass;

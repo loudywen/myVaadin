@@ -23,7 +23,7 @@ import com.vaadin.devon.serviceinterface.TemperatureRecordsDAO;
 public class TemperatureRecordsImpl implements TemperatureRecordsDAO {
 
 	private static Logger log = LoggerFactory.getLogger(TemperatureRecordsImpl.class);
-
+	
 	@Autowired
 	private JdbcTemplate jdbcTemplate;
 

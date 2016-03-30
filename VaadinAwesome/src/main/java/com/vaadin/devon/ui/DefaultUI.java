@@ -45,7 +45,7 @@ import com.vaadin.ui.themes.ValoTheme;
 @Title("Real-Time Temperature Demo")
 @Widgetset("MyAppWidgetset")
 
-public class Default extends UI {
+public class DefaultUI extends UI {
 
 	public static final String ID = "dashboard-menu";
 	public static final String REPORTS_BADGE_ID = "dashboard-menu-reports-badge";

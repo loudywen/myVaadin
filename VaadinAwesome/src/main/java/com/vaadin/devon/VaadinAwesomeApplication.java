@@ -48,7 +48,7 @@ public class VaadinAwesomeApplication {
 		return ds;
 	}
 
-	@Bean
+	/*@Bean
 	public TemperatureRecordsDAO jdbcTemplate(DataSource dataSource) {
 
 		TemperatureRecordsImpl impl = new TemperatureRecordsImpl();
@@ -56,6 +56,6 @@ public class VaadinAwesomeApplication {
 
 		impl.setJdbcTemplate(dataSource);
 		return impl;
-	}
+	}*/
 
 }

@@ -8,7 +8,7 @@ import com.vaadin.annotations.Theme;
 import com.vaadin.annotations.Title;
 import com.vaadin.annotations.Widgetset;
 import com.vaadin.devon.dummy.DummyDefaultDesign;
-import com.vaadin.devon.ui.Default;
+import com.vaadin.devon.ui.DefaultUI;
 import com.vaadin.navigator.Navigator;
 import com.vaadin.navigator.ViewChangeListener;
 
@@ -38,7 +38,7 @@ public class DummyDefault extends DummyDefaultDesign implements ViewChangeListen
 	}
 
 	private void setupNavigator(String urlName, Class view) {
-		Navigator navigator = new Navigator(Default.getCurrent(), panel);
+		Navigator navigator = new Navigator(DefaultUI.getCurrent(), panel);
 
 		navigator.addView(urlName, view);
 

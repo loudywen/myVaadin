@@ -8,6 +8,7 @@ import com.vaadin.navigator.ViewChangeListener;
 import com.vaadin.navigator.ViewProvider;
 import com.vaadin.spring.navigator.SpringViewProvider;
 import com.vaadin.ui.ComponentContainer;
+import com.vaadin.ui.Panel;
 import com.vaadin.ui.UI;
 
 @SuppressWarnings("serial")
@@ -21,8 +22,8 @@ public class DashboardNavigator extends Navigator {
 	private ViewProvider errorViewProvider;
 	private SpringViewProvider spv;
 
-	public DashboardNavigator(final ComponentContainer container, SpringViewProvider spv) {
-		super(UI.getCurrent(), container);
+	public DashboardNavigator(final Panel content, SpringViewProvider spv) {
+		super(UI.getCurrent(), content);
 /*
 		String host = getUI().getPage().getLocation().getHost();
 		if (TRACKER_ID != null && host.endsWith("demo.vaadin.com")) {

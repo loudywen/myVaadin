@@ -3,7 +3,7 @@ package com.vaadin.devon.designImpl;
 import com.google.common.eventbus.EventBus;
 import com.vaadin.devon.entity.User;
 import com.vaadin.devon.event.LoginEvent;
-import com.vaadin.devon.ui.Default;
+import com.vaadin.devon.ui.DefaultUI;
 import com.vaadin.event.ShortcutAction.KeyCode;
 import com.vaadin.server.FontAwesome;
 import com.vaadin.server.Page;
@@ -87,7 +87,7 @@ public class LoginView1 extends VerticalLayout {
 					if (username.getValue().equals("admin") ||username.getValue().equals("admin1")) {
 						User u = new User(username.getValue());
 						EventBus eventBus = new EventBus();
-						eventBus.register(new Default());
+						eventBus.register(new DefaultUI());
 						eventBus.post(new LoginEvent(u));
 					} else {
 						Notification notification = new Notification("Login failed, Please enter correct Username.");

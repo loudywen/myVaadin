@@ -9,6 +9,7 @@ import com.vaadin.spring.navigator.SpringViewProvider;
 import com.vaadin.ui.ComponentContainer;
 import com.vaadin.ui.CssLayout;
 import com.vaadin.ui.HorizontalLayout;
+import com.vaadin.ui.Panel;
 
 /*
  * Dashboard MainView is a simple HorizontalLayout that wraps the menu on the
@@ -27,8 +28,11 @@ public class MainView extends HorizontalLayout implements View  {
 
         addComponent(new DashboardMenu(spv));
 
-        ComponentContainer content = new CssLayout();
-        content.addStyleName("view-content");
+       // ComponentContainer content = new CssLayout();
+        Panel content = new Panel();
+
+        
+       content.addStyleName("view-content");
         content.setSizeFull();
         addComponent(content);
         setExpandRatio(content, 1.0f);
