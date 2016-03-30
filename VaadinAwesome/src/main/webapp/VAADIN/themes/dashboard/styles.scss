@@ -2,8 +2,10 @@
 @import "addons.scss";
 @import "dashboard";
 
+$v-included-components: join(grid, $v-included-components);
 .dashboard {
   // Output the actual theme selectors
   @include addons;
   @include dashboard;
 }
+

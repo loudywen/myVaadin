@@ -10,7 +10,7 @@
 // Optimize the CSS output
 $v-included-components: remove($v-included-components, accordion);
 $v-included-components: remove($v-included-components, colorpicker);
-$v-included-components: remove($v-included-components, grid);
+//$v-included-components: join($v-included-components, grid);
 $v-included-components: remove($v-included-components, popupview);
 $v-included-components: remove($v-included-components, progressbar);
 $v-included-components: remove($v-included-components, slider);
@@ -18,6 +18,7 @@ $v-included-components: remove($v-included-components, splitpanel);
 $v-included-components: remove($v-included-components, tree);
 $v-included-components: remove($v-included-components, treetable);
 $v-included-components: remove($v-included-components, twincolselect);
+
 
 // Main layout padding
 $view-padding: round($v-unit-size / 1.5) !default;
