@@ -26,8 +26,8 @@ import com.vaadin.devon.entity.Greeting;
 import com.vaadin.devon.entity.TemperatureRecords;
 import com.vaadin.devon.event.LoginEvent;
 import com.vaadin.devon.event.TempEvent;
-import com.vaadin.devon.firstscreen.Default;
 import com.vaadin.devon.serviceinterface.TemperatureRecordsDAO;
+import com.vaadin.devon.ui.Default;
 import com.vaadin.ui.UI;
 
 @Path("/restapi")

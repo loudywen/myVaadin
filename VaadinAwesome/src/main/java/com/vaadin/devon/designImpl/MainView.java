@@ -1,6 +1,9 @@
 package com.vaadin.devon.designImpl;
 
 
+import org.springframework.beans.factory.annotation.Autowired;
+
+import com.vaadin.spring.annotation.SpringComponent;
 import com.vaadin.ui.ComponentContainer;
 import com.vaadin.ui.CssLayout;
 import com.vaadin.ui.HorizontalLayout;
@@ -10,9 +13,12 @@ import com.vaadin.ui.HorizontalLayout;
  * left and creates a simple container for the navigator on the right.
  */
 @SuppressWarnings("serial")
-public class MainView extends HorizontalLayout {
 
+public class MainView extends HorizontalLayout {
+	
+	
     public MainView() {
+    	
         setSizeFull();
         addStyleName("mainview");
 

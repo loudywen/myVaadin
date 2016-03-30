@@ -3,7 +3,7 @@ package com.vaadin.devon.designImpl;
 import com.google.common.eventbus.EventBus;
 import com.vaadin.devon.entity.User;
 import com.vaadin.devon.event.LoginEvent;
-import com.vaadin.devon.firstscreen.Default;
+import com.vaadin.devon.ui.Default;
 import com.vaadin.event.ShortcutAction.KeyCode;
 import com.vaadin.server.FontAwesome;
 import com.vaadin.server.Page;
