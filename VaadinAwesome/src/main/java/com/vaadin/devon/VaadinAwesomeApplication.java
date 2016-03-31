@@ -36,26 +36,6 @@ public class VaadinAwesomeApplication {
 		return registration;
 	}
 
-	@Bean
-	public DataSource dataSource() {
-		BasicDataSource ds = new BasicDataSource();
-		ds.setDriverClassName("com.ibm.db2.jcc.DB2Driver");
-		ds.setUrl("jdbc:db2://localhost:50000/DEVONDB3");
-		ds.setUsername("db2admin");
-		ds.setPassword("db2admin");
 
-		log.info("---------------------------------dataSource bean created");
-		return ds;
-	}
-
-	/*@Bean
-	public TemperatureRecordsDAO jdbcTemplate(DataSource dataSource) {
-
-		TemperatureRecordsImpl impl = new TemperatureRecordsImpl();
-		log.info("---------------------------------getDataSource bean created");
-
-		impl.setJdbcTemplate(dataSource);
-		return impl;
-	}*/
 
 }

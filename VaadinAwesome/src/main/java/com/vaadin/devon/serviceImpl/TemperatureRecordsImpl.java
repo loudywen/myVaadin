@@ -17,7 +17,7 @@ import org.springframework.stereotype.Component;
 
 import com.vaadin.devon.entity.TemperatureRecords;
 import com.vaadin.devon.serviceinterface.TemperatureRecordsDAO;
-
+// old fashion way... use CrudRepository instead
 @Transactional
 @Component("TemperatureRecordsImpl")
 public class TemperatureRecordsImpl implements TemperatureRecordsDAO {
@@ -42,7 +42,7 @@ public class TemperatureRecordsImpl implements TemperatureRecordsDAO {
 				TemperatureRecords temp = new TemperatureRecords(rs.getInt("ID"), rs.getString("EMAIL"),
 						rs.getDouble("TEMPERATURE"), rs.getString("DEVICE"), rs.getTimestamp("TIMESTAMP"));
 
-				log.info(temp.toString());
+				//log.info(temp.toString());
 				return temp;
 			}
 		});
@@ -67,6 +67,24 @@ public class TemperatureRecordsImpl implements TemperatureRecordsDAO {
 		String sql = "INSERT INTO temperaturerecords(EMAIL,TEMPERATURE,DEVICE,TIMESTAMP) VALUES(?,?,?,? )";
 		jdbcTemplate.update(sql, t.getEmail(), t.getTemperature(), t.getDevice(), t.getTimeStamp());
 
+	}
+
+	@Override
+	public List<TemperatureRecords> findByEmail(String text) {
+		String selectAll = "Select * from temperaturerecords where email Like\'"+text+"%\'";
+
+		List<TemperatureRecords> allTemp = jdbcTemplate.query(selectAll, new RowMapper<TemperatureRecords>() {
+
+			public TemperatureRecords mapRow(ResultSet rs, int rowNum) throws SQLException {
+				TemperatureRecords temp = new TemperatureRecords(rs.getInt("ID"), rs.getString("EMAIL"),
+						rs.getDouble("TEMPERATURE"), rs.getString("DEVICE"), rs.getTimestamp("TIMESTAMP"));
+
+				log.info(temp.toString());
+				return temp;
+			}
+		});
+
+		return allTemp;
 	}
 
 }

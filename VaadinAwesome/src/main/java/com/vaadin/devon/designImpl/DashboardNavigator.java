@@ -22,7 +22,7 @@ public class DashboardNavigator extends Navigator {
 	private ViewProvider errorViewProvider;
 	private SpringViewProvider spv;
 
-	public DashboardNavigator(final Panel content, SpringViewProvider spv) {
+	public DashboardNavigator(final ComponentContainer content, SpringViewProvider spv) {
 		super(UI.getCurrent(), content);
 /*
 		String host = getUI().getPage().getLocation().getHost();

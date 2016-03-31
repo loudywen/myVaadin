@@ -1,20 +1,15 @@
 package com.vaadin.devon.dummyImpl;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Collection;
 
 import javax.annotation.PostConstruct;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.util.StringUtils;
 
-import com.vaadin.annotations.Theme;
-import com.vaadin.annotations.Widgetset;
 import com.vaadin.data.util.BeanItemContainer;
+import com.vaadin.devon.db2repo.TempRepo;
 import com.vaadin.devon.entity.TemperatureRecords;
-import com.vaadin.devon.entity.User;
-import com.vaadin.devon.serviceinterface.TemperatureRecordsDAO;
 import com.vaadin.navigator.View;
 import com.vaadin.navigator.ViewChangeListener.ViewChangeEvent;
 import com.vaadin.spring.annotation.SpringView;
@@ -22,27 +17,21 @@ import com.vaadin.spring.annotation.UIScope;
 import com.vaadin.ui.Button;
 import com.vaadin.ui.Component;
 import com.vaadin.ui.Grid;
-import com.vaadin.ui.Grid.SelectionMode;
 import com.vaadin.ui.HorizontalLayout;
-import com.vaadin.ui.Table;
 import com.vaadin.ui.TextField;
 import com.vaadin.ui.VerticalLayout;
 import com.vaadin.ui.themes.ValoTheme;
 
-@SpringView(name = "Dummy Grid")
-
-@Widgetset("MyAppWidgetset")
+@SpringView(name = "Dummy Grid - CRUD Version")
 @UIScope
 public class DummyGrid extends VerticalLayout implements View {
 
-	private Grid grid = new Grid();
-	//private Table t = new Table();
+	private Grid grid;
 	private TextField filter = new TextField();
-	private Button addNewBtn = new Button();
+	private Button clearFilterTextBtn = new Button("Clear filter");
 
 	@Autowired
-	@Qualifier("TemperatureRecordsImpl")
-	private TemperatureRecordsDAO tRDAO;
+	TempRepo tRepo;
 
 	@Autowired
 	private TemperatureRecords tr;
@@ -52,48 +41,65 @@ public class DummyGrid extends VerticalLayout implements View {
 
 	}
 
-
 	@PostConstruct
 	public void init() {
-		
-		//setMargin(true);
+		grid = new Grid();
+		setPrimaryStyleName("v-verticallayout");
+		setSizeFull();
 		setSpacing(true);
-		//setSizeFull();
+
 		addComponent(toolBar());
-	//	addComponent(buildTable());
+
 		listTemp(null);
 		grid.setSizeFull();
-		
-		grid.setColumnOrder("id","email","temperature","device","timeStamp");
+		grid.setHeight("100%");
+		grid.setStyleName(ValoTheme.TABLE_BORDERLESS);
+		grid.setStyleName(ValoTheme.TABLE_COMPACT);
+		grid.setStyleName(ValoTheme.TABLE_NO_HORIZONTAL_LINES);
+		grid.setColumnOrder("id", "email", "temperature", "device", "timeStamp");
+
 		addComponent(grid);
-
-	}
-
-	private void addCompents(TextField filter2, Button addNewBtn2) {
-		// TODO Auto-generated method stub
+		setExpandRatio(grid, 1.0f);
+		//
 
 	}
 
 	private void listTemp(String text) {
 		if (StringUtils.isEmpty(text)) {
 			grid.setContainerDataSource(
-					new BeanItemContainer<TemperatureRecords>(TemperatureRecords.class, tRDAO.findAll()));
+					new BeanItemContainer<TemperatureRecords>(TemperatureRecords.class, (Collection<? extends TemperatureRecords>) tRepo.findAll()));
 		} else {
-			/*
-			 * grid.setContainerDataSource( new
-			 * BeanItemContainer<TemperatureRecords>(TemperatureRecords.class,
-			 * tRDAO.findAll()));
-			 */
+			grid.setContainerDataSource(new BeanItemContainer<>(TemperatureRecords.class, tRepo.findByEmailStartingWith(text)));
+
 		}
 	}
 
 	private Component toolBar() {
 		HorizontalLayout actions = new HorizontalLayout();
+	
+		filter.setInputPrompt("filter by email...");
+		filter.addTextChangeListener(e -> {
+			grid.setContainerDataSource(
+					new BeanItemContainer<>(TemperatureRecords.class, tRepo.findByEmailStartingWith(e.getText())));
+		});
+
+		clearFilterTextBtn.addClickListener(e -> {
+			filter.clear();
+			listTemp(null);
+		});
+
+		actions.setResponsive(true);
 		actions.addComponent(filter);
-		actions.addComponent(addNewBtn);
+	
+
+		actions.addComponent(clearFilterTextBtn);
+	
+	
+		
+		
 		actions.setSpacing(true);
+	 actions.setMargin(true);
 		return actions;
 	}
-
 
 }

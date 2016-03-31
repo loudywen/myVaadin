@@ -18,25 +18,19 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
-
-import com.google.common.eventbus.EventBus;
-
 import com.vaadin.devon.boardcast.Broadcaster;
+import com.vaadin.devon.db2repo.TempRepo;
 import com.vaadin.devon.entity.Greeting;
 import com.vaadin.devon.entity.TemperatureRecords;
-import com.vaadin.devon.event.LoginEvent;
-import com.vaadin.devon.event.TempEvent;
 import com.vaadin.devon.serviceinterface.TemperatureRecordsDAO;
-import com.vaadin.devon.ui.DefaultUI;
-import com.vaadin.ui.UI;
 
 @Path("/restapi")
 @Component
 public class TestRest {
 
+	
 	@Autowired
-	@Qualifier("TemperatureRecordsImpl")
-	private TemperatureRecordsDAO tRDAO;
+	TempRepo tRepo;
 
 	@Autowired
 	private TemperatureRecords tr;
@@ -56,9 +50,9 @@ public class TestRest {
 
 	@GET
 	@Path("/sendtemp")
-	public String temp(@QueryParam("temp") String temp, @QueryParam("y") String y) {
+	public String temp(@QueryParam("temp") String temp, @QueryParam("email") String y,@QueryParam("timestamp") String z) {
 
-		String str = temp + "," + y;
+		String str = temp + "," + y+","+z;
 		bc.broadcast(str);
 		/*
 		 * EventBus eventBus = new EventBus(); eventBus.register(new Default());
@@ -70,10 +64,10 @@ public class TestRest {
 	@GET
 	@Path("/showall")
 	@Produces("application/json")
-	public List<TemperatureRecords> showAll() {
+	public Iterable<TemperatureRecords> showAll() {
 
 		
-		return tRDAO.findAll();
+		return tRepo.findAll();
 	}
 
 
@@ -89,11 +83,11 @@ public class TestRest {
 		System.out.println(reportDate);
 		java.sql.Timestamp ts = java.sql.Timestamp.valueOf(reportDate);
 		// tr.setId(1L);
-		tr.setEmail("loudywen@gmail.com");
+		tr.setEmail("loudywen1@gmail.com");
 		tr.setDevice("st100");
-		tr.setTemperature(599.0);
+		tr.setTemperature(600.0);
 		tr.setTimeStamp(ts);
-		tRDAO.insert(tr);
+		tRepo.save(tr);
 
 		return tr;
 	}

@@ -28,8 +28,8 @@ public class MainView extends HorizontalLayout implements View  {
 
         addComponent(new DashboardMenu(spv));
 
-       // ComponentContainer content = new CssLayout();
-        Panel content = new Panel();
+       ComponentContainer content = new CssLayout();
+      //  Panel content = new Panel();
 
         
        content.addStyleName("view-content");

@@ -11,4 +11,6 @@ public interface TemperatureRecordsDAO {
 	
 	public void insert(TemperatureRecords t);
 
+	public List<TemperatureRecords> findByEmail(String text);
+
 }

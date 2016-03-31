@@ -2,11 +2,19 @@ package com.vaadin.devon.entity;
 
 import java.sql.Timestamp;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
 import org.springframework.stereotype.Component;
 
+
+@Entity
 @Component
 public class TemperatureRecords {
-
+	@Id
+	 @GeneratedValue( strategy = GenerationType.IDENTITY )
 	private long id;
 	private String email;
 	private String device;

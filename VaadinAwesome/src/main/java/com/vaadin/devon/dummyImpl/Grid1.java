@@ -36,7 +36,7 @@ public class Grid1 extends GridDesign implements View {
 
 	@PostConstruct
 	protected void init(){
-		setMargin(true);
+		//setMargin(true);
 		setSpacing(true);
 		
 		listTemp(null);
