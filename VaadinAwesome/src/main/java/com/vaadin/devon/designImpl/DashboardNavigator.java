@@ -32,7 +32,7 @@ public class DashboardNavigator extends Navigator {
 		
 		
 		this.spv = spv;
-		System.out.println("---------------------------DashboardNavigator-------------------- " + spv);
+		//System.out.println("---------------------------DashboardNavigator-------------------- " + spv);
 		initViewChangeListener();
 		initViewProviders(spv);
 

@@ -35,9 +35,11 @@ public class DefaultUI extends UI {
 
 	@Override
 	protected void init(VaadinRequest request) {
+		
+		UI.getCurrent().getPage().setUriFragment("Login");
 
 		if (CheckSession.isLoggedIn()) {
-			System.out.println("---------------------------Default-------------------- " + viewProvider);
+			//System.out.println("---------------------------DefaultUI-------------------- " + viewProvider);
 			setContent(new MainView(viewProvider));
 
 		} else {

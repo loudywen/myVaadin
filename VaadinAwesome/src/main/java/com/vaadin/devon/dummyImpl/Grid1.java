@@ -24,7 +24,6 @@ import com.vaadin.ui.Grid;
 
 @SpringView(name ="Grid")
 @UIScope
-@Theme("dashboard")
 public class Grid1 extends GridDesign implements View {
 	
 	@Autowired

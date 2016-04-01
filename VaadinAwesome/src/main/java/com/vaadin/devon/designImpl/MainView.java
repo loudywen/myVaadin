@@ -22,7 +22,7 @@ public class MainView extends HorizontalLayout implements View  {
 	
 	//@PostConstruct
     public  MainView(SpringViewProvider spv) {
-    	System.out.println("---------------------------MainView-------------------- " + spv);
+    	//System.out.println("---------------------------MainView-------------------- " + spv);
         setSizeFull();
         addStyleName("mainview");
 

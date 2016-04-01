@@ -5,7 +5,6 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.List;
 import java.util.concurrent.atomic.AtomicLong;
 
 import javax.ws.rs.GET;
@@ -15,14 +14,12 @@ import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 import com.vaadin.devon.boardcast.Broadcaster;
 import com.vaadin.devon.db2repo.TempRepo;
 import com.vaadin.devon.entity.Greeting;
 import com.vaadin.devon.entity.TemperatureRecords;
-import com.vaadin.devon.serviceinterface.TemperatureRecordsDAO;
 
 @Path("/restapi")
 @Component
